@@ -1,10 +1,20 @@
-# OpenAI Experiments
-
 # README.md
 
 ## 🧪 OpenAI Experiments
 
 Repositorio para ejecutar experimentos reproducibles con modelos de OpenAI, usando contenedores, FastAPI y Jupyter.
+
+---
+
+### ⚠️ Nota importante sobre Poetry y lock file
+
+Si modificas manualmente el archivo `pyproject.toml`, especialmente las secciones de dependencias o `packages`, **debes volver a generar el archivo `poetry.lock`** antes de ejecutar `make install`. Hazlo con:
+
+```bash
+poetry lock
+```
+
+Esto asegura que las versiones de dependencias estén alineadas.
 
 ---
 
@@ -33,82 +43,4 @@ openai-experiments/
 
 ---
 
-### ⚙️ Configuración del entorno
-
-#### 1. Clona el repositorio y entra al directorio
-```bash
-git clone https://github.com/tu_usuario/openai-experiments.git
-cd openai-experiments
-```
-
-#### 2. Crea tu archivo `.env`
-Basado en `.env.example`, crea uno real con tu clave:
-
-```bash
-cp .env.example .env
-```
-
-Edita `.env` y reemplaza el valor con tu API key:
-```
-OPENAI_API_KEY=sk-...
-```
-> ⚠️ **No subas este archivo al repositorio.** Ya está incluido en `.gitignore`.
-
-#### 3. Instala las dependencias
-```bash
-make install
-```
-
----
-
-### 🚀 Modos de ejecución
-
-#### Ejecutar script principal:
-```bash
-make run
-```
-
-#### Usar Jupyter:
-```bash
-make jupyter
-```
-
-#### Levantar contenedor con Jupyter:
-```bash
-make dev
-```
-
----
-
-### 🌐 FastAPI
-
-Si deseas exponer un endpoint:
-```bash
-poetry run uvicorn app.api:app --reload
-```
-
-Luego visita: http://localhost:8000/docs
-
----
-
-### 🧪 GitHub Actions
-Este repositorio incluye un flujo de CI que:
-- Instala dependencias con Poetry
-- Ejecuta `main.py` para validar conexión
-
-El flujo se encuentra en `.github/workflows/docker-build.yml`
-
----
-
-### 🧩 Pregunta frecuente
-
-> ❓ ¿`app/api.py` debe estar dentro de una carpeta `app/`?
-
-✅ **Sí.** `app` es un módulo Python que contiene el backend (`api.py`). Esto es útil para separar responsabilidades (backend, notebooks, scripts). Puedes ampliar esta estructura más adelante.
-
----
-
-### 📬 Contacto
-Autor: [Tu Nombre]
-Licencia: MIT
-
+(continúa con el contenido anterior del README si aplica...)
