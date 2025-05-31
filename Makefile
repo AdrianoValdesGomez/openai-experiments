@@ -16,3 +16,9 @@ test:
 # .github/workflows/docker-build.yml (update)
       - name: Run tests
         run: poetry run pytest tests/
+
+build:
+	docker build -t openai-experiments .
+
+build-podman:
+	podman build -t openai-experiments .
