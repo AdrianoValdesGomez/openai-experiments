@@ -1,0 +1,11 @@
+version: '3.9'
+services:
+  openai:
+    build: .
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    ports:
+      - "8888:8888"
+    command: poetry run jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root
