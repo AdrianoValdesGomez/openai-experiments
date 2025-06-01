@@ -36,16 +36,20 @@ Repositorio para realizar experimentos reproducibles con modelos de OpenAI, inte
 ## 🚀 Comandos disponibles
 
 ```bash
-make install        # Instala dependencias y configura entorno
-make run            # Ejecuta la API local con uvicorn
-make test           # Ejecuta los tests
-make jupyter        # Lanza Jupyter Notebook
-make dev            # Lanza el contenedor Docker para desarrollo
-make dev-podman     # Lanza el contenedor con Podman
-make build          # Construye imagen Docker
-make build-podman   # Construye imagen Podman
-make format         # Formatea código con black
+make podman-setup    # Instala Podman y configura podman-machine (solo macOS)
 ```
+
+```bash
+make podman-setup    # Instala y configura Podman para macOS (brew + podman machine)
+make install         # Instala dependencias y configura entorno
+make run             # Ejecuta la API local con uvicorn
+make test            # Ejecuta los tests
+make jupyter         # Lanza Jupyter Notebook
+make dev             # Lanza el contenedor Docker para desarrollo
+make dev-podman      # Lanza el contenedor con Podman
+make build           # Construye imagen Docker
+make build-podman    # Construye imagen Podman
+make format          # Formatea código con black
 
 ### 🎯 Alternativas con Podman (dentro del contenedor):
 Si deseas que `podman`, `podman-compose` y `poetry` estén **dentro del contenedor**, modifica tu `Dockerfile` para instalar estas herramientas allí también (no en tu sistema anfitrión). Se recomienda esto solo si vas a usar el contenedor como entorno de desarrollo principal.
@@ -115,6 +119,31 @@ podman machine init
 podman machine start
 ```
 Antes de construir o ejecutar el contenedor.
+
+---
+
+## 🧰 Configuración previa para usar Podman en macOS
+
+Antes de poder ejecutar `make dev-podman` o `make build-podman`, asegúrate de tener instalado lo siguiente **en tu sistema anfitrión (fuera del contenedor):**
+
+1. **Instalar Podman y Podman Compose:**
+   ```bash
+   brew install podman podman-compose
+   ```
+
+2. **Inicializar y arrancar la máquina virtual de Podman (Lima):**
+   ```bash
+   podman machine init
+   podman machine start
+   ```
+
+3. (Opcional) Verificar instalación:
+   ```bash
+   podman info
+   podman-compose version
+   ```
+
+> 🔒 Esto sólo se hace una vez en tu entorno local. A partir de ahí, puedes usar todos los comandos `make dev-podman`, `make build-podman`, etc.
 
 ---
 
