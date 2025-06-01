@@ -13,18 +13,7 @@ def test_chat_endpoint():
     assert "response" in response.json()
     assert isinstance(response.json()["response"], str)
 
-# pyproject.toml (update)
-[tool.poetry.dependencies]
-python = "^3.11"
-openai = "^1.0.0"
-python-dotenv = "^1.0.0"
-fastapi = "^0.111.0"
-uvicorn = "^0.30.0"
-jupyter = "^1.0.0"
 
-[tool.poetry.group.dev.dependencies]
-pytest = "^8.1.1"
-httpx = "^0.27.0"
 
 # Makefile (update)
 test:

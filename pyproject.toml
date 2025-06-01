@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "openai_experiments"
-version = "0.1.0"
+version = "0.28.1"
 description = "Reproducible experiments with OpenAI models"
 authors = ["Your Name <you@example.com>"]
 packages = [
